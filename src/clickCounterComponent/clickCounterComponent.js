@@ -24,7 +24,7 @@ class clickCounterComponent extends Component{
             <div>
                 <p>This Button is the click counter in Component Form, Click It!</p>
                 <p>This button has been click {this.state.count} times</p>
-                <button onClick={this.clickCount}>Click Me!</button>
+                <button onClick={()=> {this.clickCount()}}>Click Me!</button>
             </div>
         );
     }

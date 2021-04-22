@@ -14,7 +14,7 @@ class BoundClickCounter extends Component{
 
     componentDidUpdate(prevstate){
 
-        console.log("inside componentDidUpdate, this.state", this.state);
+        // console.log("inside componentDidUpdate, this.state", this.state);
         if (prevstate != this.state){
             this.postClick()
         };
@@ -29,10 +29,10 @@ class BoundClickCounter extends Component{
     }
 
     postClick(){
-        console.log("Inside postClick, thi.state.count", this.state.count);
+        // console.log("Inside postClick, thi.state.count", this.state.count);
         axios({
             method: 'post',
-            url: '/api/clickCounter',
+            url: '/api/clickCounter/thirdCounter',
             data: {
               thirdbuttonclicks: this.state.count
             }

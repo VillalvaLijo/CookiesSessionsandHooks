@@ -1,9 +1,17 @@
 import React, {Component} from 'react';
-
+import axios from 'axios';
 
 class clickCounterComponent extends Component{
     state ={
         count: 0
+    }
+
+    componentDidUpdate(prevstate){
+        console.log("Inside componentDidUpdate, clickCounterComponent, this.state", this.state);
+
+        if(prevstate != this.state){
+            this.postSecoundClick()
+        }
     }
 
     clickCount(){
@@ -13,10 +21,22 @@ class clickCounterComponent extends Component{
 
         // this.state.count +=1;
 
-        
+    
 
-        console.log("clickCount, this.state.count:", this.state.count);
+        // console.log("clickCount, this.state.count:", this.state.count);
     };
+
+    postSecoundClick(){
+        console.log("postSecoundCLick, this.state:", this.state)
+
+        axios({
+            method: 'post',
+            url: '/api/clickCounter/secoundCounter',
+            data: {
+              scoundbuttonclicks: this.state.count
+            }
+          });
+    }
 
 
     render(){

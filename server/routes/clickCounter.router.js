@@ -16,6 +16,10 @@ router.post('/thirdCounter', (req, res) =>{
     console.log("Inside third button post in clickCounter.router, req.body", req.body)
 });
 
+router.post('/fourthCounter', (req, res)=>{
+    console.log("Inside fourth button counter POST Request, req.body", req.body);
+})
+
 
 
 

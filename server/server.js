@@ -2,11 +2,15 @@ const express = require('express');
 
 var cookieSession = require('cookie-session');
 
+const clickCounterRouter = require('./routes/clickCounter.router');
+
 const app = express();
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
+
+app.use('/api/clickCounter', clickCounterRouter);
 
 app.use(cookieSession({
     name: 'clickcounter',

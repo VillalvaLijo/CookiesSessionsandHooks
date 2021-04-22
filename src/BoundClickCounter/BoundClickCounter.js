@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 
 class BoundClickCounter extends Component{
 
@@ -11,11 +12,33 @@ class BoundClickCounter extends Component{
         count: 0
     }
 
+    componentDidUpdate(prevstate){
+
+        console.log("inside componentDidUpdate, this.state", this.state);
+        if (prevstate != this.state){
+            this.postClick()
+        };
+    }
+
     clickCounter(){
         this.setState({
             count: this.state.count + 1,
         })
+
+    // this.postClick()
     }
+
+    postClick(){
+        console.log("Inside postClick, thi.state.count", this.state.count);
+        axios({
+            method: 'post',
+            url: '/api/clickCounter',
+            data: {
+              thirdbuttonclicks: this.state.count
+            }
+          });
+    }
+
 
     render(){
         return(
@@ -23,7 +46,7 @@ class BoundClickCounter extends Component{
                 <p>This is the BoundClickCounter, it is different from the previous click counter, it binds, this
                     to the click counter function
                 </p>
-                <p>You have clicked BoundCLickCounter {this.state.count} times</p>
+                <p>You have clicked BoundClickCounter {this.state.count} times</p>
                 <button onClick={this.clickCounter}>Click Me</button>
             </div>
         )

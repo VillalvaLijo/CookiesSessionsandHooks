@@ -6,7 +6,7 @@ let config = {};
 config = {
     host: 'localhost',
     port: 5432,
-    database: cookies_sessions_hooks,
+    database: 'cookies_sessions_hooks',
     max: 10,
     idleTimeoutMillis: 3000
 };

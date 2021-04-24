@@ -29,13 +29,37 @@ class clickCounterComponent extends Component{
     postSecoundClick(){
         console.log("postSecoundCLick, this.state:", this.state)
 
+        // axios.get('/api/clickCounter').then(resp => {
+
+        //     console.log("This is the get request response",resp.data);
+        // });
+
+        axios({
+            method: 'get',
+            url: '/api/clickCounter'
+        })
+
+        axios({
+            method: 'head',
+            url: '/api/clickCounter'
+        })
+
         axios({
             method: 'post',
             url: '/api/clickCounter/secoundCounter',
             data: {
-              scoundbuttonclicks: this.state.count
+              secoundbuttonclicks: this.state.count
             }
           });
+
+
+        //   axios.all([
+        //     axios.get('/api/clickCounter'),
+        //     axios.post({ url: '/api/clickCounter/secoundCounter', 
+        //                 data: {
+        //                     secoundbuttonclicks: this.state.count
+        //                 }})
+        //   ]);
     }
 
 

@@ -6,6 +6,10 @@ class clickCounterComponent extends Component{
         count: 0
     }
 
+    componentDidMount(){
+        this.getSecoundCounterClicks()
+    }
+
     componentDidUpdate(prevstate){
         console.log("Inside componentDidUpdate, clickCounterComponent, this.state", this.state);
 
@@ -26,6 +30,17 @@ class clickCounterComponent extends Component{
         // console.log("clickCount, this.state.count:", this.state.count);
     };
 
+    getSecoundCounterClicks(){
+        axios.get('/api/secoundClickCounter').then(resp => {
+
+            console.log("This is the get request response",resp.data);
+            // this.setState({
+            //     count: resp.data
+            // })
+        }).catch(error => {
+            console.log('error making secound counter click get', error);
+        });
+    }
     postSecoundClick(){
         console.log("postSecoundCLick, this.state:", this.state)
 
@@ -34,21 +49,21 @@ class clickCounterComponent extends Component{
         //     console.log("This is the get request response",resp.data);
         // });
 
-        axios({
-            method: 'get',
-            url: '/api/clickCounter'
-        })
+        // axios({
+        //     method: 'get',
+        //     url: '/api/clickCounter'
+        // })
 
-        axios({
-            method: 'head',
-            url: '/api/clickCounter'
-        })
+        // axios({
+        //     method: 'head',
+        //     url: '/api/clickCounter'
+        // })
 
         axios({
             method: 'post',
-            url: '/api/clickCounter/secoundCounter',
+            url: '/api/secoundClickCounter',
             data: {
-              secoundbuttonclicks: this.state.count
+              secoundCounterClicks: this.state.count
             }
           });
 

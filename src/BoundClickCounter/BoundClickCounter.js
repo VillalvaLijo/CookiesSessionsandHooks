@@ -12,18 +12,39 @@ class BoundClickCounter extends Component{
         count: 0
     }
 
+    componentDidMount(){
+        this.getThirdCounterClicks()
+    }
+
     componentDidUpdate(prevstate){
 
         // console.log("inside componentDidUpdate, this.state", this.state);
         if (prevstate != this.state){
+
+            console.log("Inside ComponentDidUpdate BoundClickCounter, this.state",this.state);
             this.postClick()
         };
+    }
+
+    getThirdCounterClicks(){
+        axios.get('/api/thirdClickCounter').then(resp => {
+
+            console.log("This is the third clicker get request response",resp.data);
+            // this.setState({
+            //     count: resp.data
+            // })
+        }).catch(error => {
+            console.log('error making third counter click get', error);
+        });
+
     }
 
     clickCounter(){
         this.setState({
             count: this.state.count + 1,
         })
+        console.log("INside Bound CLick counter click Counter function")
+        
 
     // this.postClick()
     }
@@ -32,7 +53,7 @@ class BoundClickCounter extends Component{
         // console.log("Inside postClick, thi.state.count", this.state.count);
         axios({
             method: 'post',
-            url: '/api/clickCounter/thirdCounter',
+            url: '/api/thirdClickCounter',
             data: {
               thirdbuttonclicks: this.state.count
             }

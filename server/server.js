@@ -2,29 +2,67 @@ const express = require('express');
 
 const session = require('express-session');
 
-// var cookieSession = require('cookie-session');
+const cookieSession = require('cookie-session');
 
-const clickCounterRouter = require('./routes/clickCounter.router');
+const secoundClickCounterRouter = require('./routes/secoundClickCounter.router');
+const thirdClickCounterRouter = require('./routes/thirdClickCounter.router')
 
 const app = express();
 const bodyParser = require('body-parser');
 
+//play around with cookieSession here
+
+// Makes req.session a thing
+app.use(cookieSession({
+  name: 'session',
+  keys: ['session'],
+ 
+  // Cookie Options
+  maxAge: 60 * 60 * 1000 // 60 minutes
+}));
+
+
+// var myLogger = function (req, res, next) {
+//     console.log('LOGGED')
+//     next()
+//   }
+
+// app.use(myLogger);
+
+
+// app.use(session({
+//     genid: function(req){
+//         var genuid = genuuid()
+
+//         console.log("Inside app.use genid, genuid:", genuid)
+            //genuuid is not defined
+//         return genuid//use UUIDs for session IDs
+//     },
+//     secret: 'SUPERSECRET'
+// }));
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 
-app.use('/api/clickCounter', clickCounterRouter);
+app.use('/api/secoundClickCounter', secoundClickCounterRouter);
+app.use('/api/thirdClickCounter', thirdClickCounterRouter)
+
+
 
 // app.use(cookieSession({
 //     name: 'clickcounter',
 //     keys: ['key1', 'key2']
 // }))
 
-// app.use(session({
-//     genid: function(req){
-//         return genuuid()//use UUIDs for session IDs
-//     },
-//     secret: 'SUPERSECRET'
-// }));
+// console.log(app.use); //[Function: use]
+
+
+
+// app.get('/', function (req, res) {
+//     res.send('Hello World!')
+//   })
+  
 // app.set('trust proxy', 1);
 // app.use(session({
 //     secret: 'keyboard warrior',

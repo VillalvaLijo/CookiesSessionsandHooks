@@ -14,6 +14,10 @@ router.post('/', (req, res) =>{
     req.session.thirdCounterClicks = req.body.thirdbuttonclicks;
 
     // console.log("Inside third Counter POST, req.session", req.session);
+    // res.sendStatus(200)
+    // res.end("it worked")
+
+    res.redirect('back')
 });
 
 router.get('/', (req, res) =>{

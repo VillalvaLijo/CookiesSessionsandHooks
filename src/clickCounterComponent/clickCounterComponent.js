@@ -34,6 +34,10 @@ class clickCounterComponent extends Component{
         axios.get('/api/secoundClickCounter').then(resp => {
 
             console.log("This is the get request response",resp.data);
+            this.setState({
+                count: resp.data.secoundCounterClicks
+            })
+
             // this.setState({
             //     count: resp.data
             // })

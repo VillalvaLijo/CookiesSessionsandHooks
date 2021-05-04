@@ -10,6 +10,12 @@ const thirdClickCounterRouter = require('./routes/thirdClickCounter.router')
 const app = express();
 const bodyParser = require('body-parser');
 
+var http = require('http');
+var https = require('https');
+
+http.globalAgent.maxSockets = Infinity;
+https.globalAgent.maxSockets = Infinity;
+
 //play around with cookieSession here
 
 // Makes req.session a thing

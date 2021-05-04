@@ -19,7 +19,7 @@ const router = express.Router();
 router.get('/', (req, res) =>{
     // console.log("In secound button get request, req.session", req.session);
 
-    secoundCounterClicks = req.session.secoundCounterClicks;
+    secoundCounterClicks = { secoundCounterClicks: req.session.secoundCounterClicks};
 
     console.log("Inside secound counter get request, req.session.secoundCounterClicks", req.session.secoundCounterClicks);
     // console.log("Inside Get request, req.session",req.session);
@@ -44,6 +44,10 @@ router.post('/', (req, res) => {
     //         console.log(`Error making database query ${sqlText}`, error);
     //         res.sendStatus(500);
     //     });
+    
+    
+    res.sendStatus(200);
+    // res.end()
 });
 
 

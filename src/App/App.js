@@ -3,7 +3,7 @@ import './App.css';
 import CounterButton from '../CounterButton/CounterButton';
 import ClickCounterComponent from '../clickCounterComponent/clickCounterComponent';
 import BoundClickCounter from '../BoundClickCounter/BoundClickCounter';
-import axios from 'axios';
+// import axios from 'axios';
 // import UseReducerCounter from '../UseReducerCounter/useReducerCounter'
 
 function App() {

@@ -4,6 +4,7 @@ const session = require('express-session');
 
 const cookieSession = require('cookie-session');
 
+const firstClickCounterRouter = require('./routes/firstClickCounter.router');
 const secoundClickCounterRouter = require('./routes/secoundClickCounter.router');
 const thirdClickCounterRouter = require('./routes/thirdClickCounter.router')
 
@@ -20,8 +21,8 @@ https.globalAgent.maxSockets = Infinity;
 
 // Makes req.session a thing
 app.use(cookieSession({
-  name: 'session',
-  keys: ['session'],
+  name: 'firstcookie',
+  keys: ['cookiekey'],
  
   // Cookie Options
   maxAge: 60 * 60 * 1000 // 60 minutes
@@ -51,6 +52,7 @@ app.use(cookieSession({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 
+app.use('/api/firstClickCounter', firstClickCounterRouter);
 app.use('/api/secoundClickCounter', secoundClickCounterRouter);
 app.use('/api/thirdClickCounter', thirdClickCounterRouter)
 

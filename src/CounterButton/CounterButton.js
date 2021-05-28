@@ -9,34 +9,13 @@ function CounterButton(){
 
       
       console.log("Inside useEffect, function inside useEffect Hook, count",count);
-      // getClicks();
+    
 
       if(count == 0 ){
         getClicks();
       }else{
         postClicks();
       }
-      // postClicks();
-      // axios({
-      //   method: 'post',
-      //   url: '/api/firstClickCounter',
-      //   data: {
-      //     firstCounterClicks: count
-      //   }
-      // });
-
-      // axios.interceptors.response.use(x => {
-      //   // console.log(`Execution time for: ${x.config.url} - ${new Date().getTime() - x.config.meta} ms`)
-
-      //   // const headers = {
-      //   //   ... x.headers.common,
-      //   //   ... x.headers[x.method],
-      //   //   ...x.headers
-      //   // }
-      //   console.log("x", x)
-      //   return x;
-      // })
-      
     });
 
     function getClicks(){

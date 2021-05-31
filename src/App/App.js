@@ -5,6 +5,8 @@ import ClickCounterComponent from '../clickCounterComponent/clickCounterComponen
 import BoundClickCounter from '../BoundClickCounter/BoundClickCounter';
 // import axios from 'axios';
 // import UseReducerCounter from '../UseReducerCounter/useReducerCounter'
+import HomePage from '../HomePage/HomePage';
+
 
 import {
   BrowserRouter as Router,
@@ -37,6 +39,9 @@ function App() {
       </Route>
       <Route path="/thirdClicker">
         <BoundClickCounter/>
+      </Route>
+      <Route path="/HomePage">
+        <HomePage/>
       </Route>
     </Switch>
 

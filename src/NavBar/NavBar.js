@@ -9,17 +9,28 @@ import MenuIcon from '@material-ui/icons/Menu';
 import MenuButton from '../MenuButton/MenuButton'
 
 import theme from '../GeneralTheme/GeneralTheme'
+import { red } from '@material-ui/core/colors';
 var theme_1 = theme;
 
 const useStyles = makeStyles((theme_1) => ({
     root: {
+        // display: flex,
+        display: "flex",
         flexGrow: 1,
+        color: "red",
+        "justify-content": "center",
+      
+        // justify-content: center,
+        // justifyContent: center,
     },
     menuButton: {
         marginRight: theme.spacing(2),
     },
     title: {
+        display: "flex",
         flexGrow: 1,
+        "justify-content": "center",
+
         // justifyContent: Center,
     },
 }));

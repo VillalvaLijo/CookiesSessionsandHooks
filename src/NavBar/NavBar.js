@@ -8,11 +8,10 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuButton from '../MenuButton/MenuButton'
 
-import theme from '../GeneralTheme/GeneralTheme'
 import { red } from '@material-ui/core/colors';
-var theme_1 = theme;
 
-const useStyles = makeStyles((theme_1) => ({
+
+const useStyles = makeStyles((theme) => ({
     root: {
         // display: flex,
         display: "flex",

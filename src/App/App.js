@@ -6,6 +6,8 @@ import BoundClickCounter from '../BoundClickCounter/BoundClickCounter';
 // import axios from 'axios';
 // import UseReducerCounter from '../UseReducerCounter/useReducerCounter'
 import HomePage from '../HomePage/HomePage';
+import GeneralTheme from '../GeneralTheme/GeneralTheme';
+
 
 
 import {
@@ -16,6 +18,7 @@ import {
 } from "react-router-dom"
 
 import NavBar from '../NavBar/NavBar';
+import { ThemeProvider } from '@material-ui/core';
 
 function App() {
 
@@ -24,6 +27,7 @@ function App() {
   return (
 <div>
   <Router>
+    <ThemeProvider theme={GeneralTheme}>
     <NavBar/>
   {/* <h1>Hello World</h1> */}
   
@@ -44,7 +48,7 @@ function App() {
         <HomePage/>
       </Route>
     </Switch>
-
+    </ThemeProvider>
   </Router>
 </div>
 

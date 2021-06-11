@@ -5,12 +5,28 @@ import GeneralTheme from '../GeneralTheme/GeneralTheme';
 import { makeStyles } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/core';
 
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+
+
+
 const useStyles = makeStyles((theme) =>({
   root: {
     display: "flex",
+    justifyContent: "center",
     flexGrow: 1,
-    "Justify-Content": "center",
-    color: "red",
+    maxWidth: 250,
+    
+    "background-color": "#26a69a",
+    
+  },
+  button:{
+    "background-color": 'Yellow',
   }
 }))
 
@@ -22,7 +38,7 @@ function CounterButton(){
     useEffect(()=>{
 
       
-      console.log("Inside useEffect, function inside useEffect Hook, count",count);
+      //console.log("Inside useEffect, function inside useEffect Hook, count",count);
     
 
       if(count == 0 ){
@@ -57,13 +73,22 @@ function CounterButton(){
 
 
     return (
-        <div className={classes.root}>
+        <div>
+          <CssBaseline/>
+          <Container maxWidth="lg">
+          <Typography component="div" style={{backgroundColor:'cyan', height:'100vh'}} >
+         
+          <Card className={classes.root}>
           {/* <ThemeProvider theme = {GeneralTheme}> */}
           <p>You clicked {count} times</p>
-          <Button className = {classes.root} variant="contained" color="secondary" onClick={() => setCount(count + 1)}>
+          <Button className = {classes.button} variant="contained" color="secondary" onClick={() => setCount(count + 1)}>
             Click me
           </Button>
           {/* </ThemeProvider> */}
+          </Card>
+
+          </Typography>
+          </Container>
         </div>
       );
 }

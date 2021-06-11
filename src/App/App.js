@@ -7,6 +7,7 @@ import BoundClickCounter from '../BoundClickCounter/BoundClickCounter';
 // import UseReducerCounter from '../UseReducerCounter/useReducerCounter'
 import HomePage from '../HomePage/HomePage';
 import GeneralTheme from '../GeneralTheme/GeneralTheme';
+import ClickerContainer from '../ClickerContainer/ClickerContainer'
 
 
 
@@ -36,7 +37,9 @@ function App() {
   {/* <UseReducerCounter/> */}
     <Switch>
       <Route path="/firstClicker">
-        <CounterButton/>
+        {/* <ClickerContainer> */}
+          <CounterButton/>
+        {/* </ClickerContainer> */}
       </Route>
       <Route path="/secoundClicker">
         <ClickCounterComponent/>

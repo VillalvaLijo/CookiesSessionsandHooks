@@ -26,7 +26,7 @@ function App() {
  
 
   return (
-<div>
+<div className = "body">
   <Router>
     <ThemeProvider theme={GeneralTheme}>
     <NavBar/>
@@ -47,9 +47,14 @@ function App() {
       <Route path="/thirdClicker">
         <BoundClickCounter/>
       </Route>
-      <Route path="/HomePage">
+      <Route
+      path="/HomePage">
         <HomePage/>
       </Route>
+      <Route
+        path="/">
+          <HomePage/>
+        </Route>
     </Switch>
     </ThemeProvider>
   </Router>

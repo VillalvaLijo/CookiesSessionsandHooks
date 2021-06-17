@@ -11,14 +11,21 @@ class clickCounterComponent extends Component{
     }
 
     componentDidUpdate(prevstate){
-        console.log("Inside componentDidUpdate, clickCounterComponent, this.state", this.state);
+        //console.log("Inside componentDidUpdate, clickCounterComponent, this.state", this.state);
 
+        //If prevState does not match current state send new state (Click Count)
+        //server side with a post request so it can be stored in seession data.
         if(prevstate != this.state){
             this.postSecoundClick()
         }
     }
 
     clickCount(){
+        //Inside JSX tags clickCount is called with an empty arrow functio ()=>{clickCount()}
+        //that is why you don't have to bind the instance of this to the function.
+        //It recives 'this' (state) from the outer lexical environment and calls it normally
+        // this is called a wrapper
+
         this.setState({
             count: this.state.count + 1,
         })
@@ -88,6 +95,17 @@ class clickCounterComponent extends Component{
                 <p>This Button is the click counter in Component Form, Click It!</p>
                 <p>This button has been click {this.state.count} times</p>
                 <button onClick={()=> {this.clickCount()}}>Click Me!</button>
+                
+                
+                {/* this set up on the following line dosen't work becuase click count
+                cannot accesses state with out the wrapper function allowing it to grab state from the overhead 
+                lexical environmnet */}
+
+                {/* You Need the wrapper function ()=>{this.clickCount} */}
+                
+                {/* <button onClick={this.clickCount}>Click Me!</button> */}
+
+
             </div>
         );
     }

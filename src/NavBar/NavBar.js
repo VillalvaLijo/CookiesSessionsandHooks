@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 import {AppBar} from '@material-ui/core';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -9,6 +9,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import MenuButton from '../MenuButton/MenuButton'
 
 import { red } from '@material-ui/core/colors';
+import { spacing } from '@material-ui/system';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -16,14 +17,16 @@ const useStyles = makeStyles((theme) => ({
         // display: flex,
         display: "flex",
         flexGrow: 1,
-        color: "red",
+        color: "black",
         "justify-content": "center",
       
         // justify-content: center,
         // justifyContent: center,
     },
     menuButton: {
-        marginRight: theme.spacing(2),
+        // marginRight: theme.spacing(2),
+        margin: spacing(2),
+        // color: theme.secondary,
     },
     title: {
         display: "flex",
@@ -42,7 +45,7 @@ export default function NavBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          <IconButton edge="start" className={classes.menuButton} color="#000000" aria-label="menu">
             <MenuButton />
           </IconButton>
           {/* <Typography variant="h6" className={classes.title}>

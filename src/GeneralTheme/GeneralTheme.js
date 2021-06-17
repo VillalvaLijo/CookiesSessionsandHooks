@@ -1,26 +1,18 @@
-import { createMuiTheme } from '@material-ui/core/styles';
-import purple from '@material-ui/core/colors/purple';
-import green from '@material-ui/core/colors/green';
+import { createTheme } from '@material-ui/core/styles'
+import cyan from '@material-ui/core/colors/cyan'
 
-import cyan from '@material-ui/core/colors/cyan';
-
-const GeneralTheme = createMuiTheme({
-//   palette: {
-//     primary: {
-//       main: purple[500],
-//     },
-//     secondary: {
-//       main: green[500],
-//     },
-//   },
+const GeneralTheme = createTheme({
     palette: {
-      primary: cyan,
-      secondary: {
-        main: '#ffeb3b',
-      },
-    },
-
-
-});
+        primary: {
+            main: cyan[500],
+        },
+        secondary: {
+            main: "#ffea00",
+        }
+    }
+})
 
 export default GeneralTheme;
+
+//#ffea00 yellow
+//#00bcd4 cyan

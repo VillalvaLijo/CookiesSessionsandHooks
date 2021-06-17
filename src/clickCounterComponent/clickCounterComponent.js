@@ -1,7 +1,29 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
+//material-ui dependencies
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
+import {makeStyles} from '@material-ui/styles'
+//Importing Card from material-ui
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+
+
+const useStyles = makeStyles((theme)=>({
+    root: {
+
+    },
+    button: {
+
+    }
+}))
+
 class clickCounterComponent extends Component{
+    classes = useStyles();
     state ={
         count: 0
     }
@@ -88,24 +110,40 @@ class clickCounterComponent extends Component{
         //   ]);
     }
 
+    clickCounterButtonJSX(){
+        return(
+            <Box style={{backgroundColor: '#6fbf73'}}>
+            <p>This Button is the click counter in Component Form, Click It!</p>
+            <p>This button has been click {this.state.count} times</p>
+            <button onClick={()=> {this.clickCount()}}>Click Me!</button>
+            </Box>
+        )
+    }
 
     render(){
         return (
             <div>
-                <p>This Button is the click counter in Component Form, Click It!</p>
-                <p>This button has been click {this.state.count} times</p>
-                <button onClick={()=> {this.clickCount()}}>Click Me!</button>
+                <CssBaseline/>
+                <Container maxwidth="lg">
+                    <Typography component="div" style={{backgroundColor: '#ffee33', 
+                                                        height:'100vh',
+                                                        display:'flex'}}>
+                                                            {/* Writing display flex, pushes edge of 
+                                                            container to the navbar on the top of the page */}
+
+               
+                    {this.clickCounterButtonJSX()}
                 
-                
+                </Typography>
                 {/* this set up on the following line dosen't work becuase click count
                 cannot accesses state with out the wrapper function allowing it to grab state from the overhead 
                 lexical environmnet */}
 
                 {/* You Need the wrapper function ()=>{this.clickCount} */}
-                
+
                 {/* <button onClick={this.clickCount}>Click Me!</button> */}
 
-
+                </Container>
             </div>
         );
     }

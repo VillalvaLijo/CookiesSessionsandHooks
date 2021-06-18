@@ -23,6 +23,9 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 
+//importing Button from material UI
+import Button from '@material-ui/core/Button';
+
 
 //styles to be used in rendering, using withStyles Higher-order component
 
@@ -36,11 +39,20 @@ const useStyles = theme => ({
     content: {
         backgroundColor: '#6fbf73',
         display: 'flex',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         "flex-direction": "column",
+        alignItems: 'center',
+        height: 460,
     },
     count: {
-        fontSize: 150
+        fontSize: 150,
+        'block-size': '170px',
+    },
+    button: {
+        maxWidth: 200,
+        width: 200,
+        color: "#ffea00",
+        
     } 
   });
 
@@ -166,8 +178,12 @@ class clickCounterComponent extends Component{
                                 <CardContent className = {classes.content}>
                                 {/* <p>This Button is the click counter in Component Form, Click It!</p>
                                 <p>This button has been click {this.state.count} times</p> */}
+                                <Box>
                                 <h1 className = {classes.count}>{this.state.count}</h1>
-                                <button onClick={()=> {this.clickCount()}}>Click Me!</button>
+                                </Box>
+                                <Box>
+                                <Button className= {classes.button} variant="contained" color="secondary"onClick={()=> {this.clickCount()}}>Click Me!</Button>
+                                </Box>
                             {/* </Box> */}
                             </CardContent>
                         </Card>

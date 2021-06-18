@@ -61,7 +61,8 @@ const useStyles = theme => ({
         
     },
     explantion:{
-        'block-size':'600px'
+        // 'block-size': 'px',
+        'width': 300
     } 
   });
 
@@ -204,8 +205,11 @@ class clickCounterComponent extends Component{
                         <Box style={{
                             maxWidth: 600,
                             paddingTop: '30px'
+                            
                         }}>
-                            <Paper elevation={5}style={{backgroundColor: '#ffc34d'}}>
+                            <Paper elevation={5}style={{backgroundColor: '#ffc34d',
+                                                        width: 625,
+                                                        height: 100}}>
                         <Typography variant="body1" classesName={classes.explantion}gutterBottom>
                     This Clicker button uses a class component. The button increases the count by using a wrapped call to a function ( onClick = {"{"} ()=>{"{"}this.clickCount() {"}"} {"}"}  ), this allows the function clickCount
                             to accesses the state from the surrounding context inside the React Class Component. 

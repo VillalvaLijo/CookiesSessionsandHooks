@@ -6,24 +6,47 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
+
+//Can't use make styles or useStyles hook
+//becuase hooks are only availble to use for functional components
+
 import {makeStyles} from '@material-ui/styles'
+
+//for a class component use withStyles
+// import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/styles';
+
+
+
 //Importing Card from material-ui
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 
 
-const useStyles = makeStyles((theme)=>({
+//styles to be used in rendering, using withStyles Higher-order component
+
+const useStyles = theme => ({
     root: {
+      backgroundColor: '#6fbf73',
+      width: 300,
+      height: 460,
 
     },
-    button: {
+    content: {
+        backgroundColor: '#6fbf73',
+        display: 'flex',
+        justifyContent: 'space-between',
+        "flex-direction": "column",
+    },
+    count: {
+        fontSize: 150
+    } 
+  });
 
-    }
-}))
 
 class clickCounterComponent extends Component{
-    classes = useStyles();
+
     state ={
         count: 0
     }
@@ -110,29 +133,44 @@ class clickCounterComponent extends Component{
         //   ]);
     }
 
-    clickCounterButtonJSX(){
-        return(
-            <Box style={{backgroundColor: '#6fbf73'}}>
-            <p>This Button is the click counter in Component Form, Click It!</p>
-            <p>This button has been click {this.state.count} times</p>
-            <button onClick={()=> {this.clickCount()}}>Click Me!</button>
-            </Box>
-        )
-    }
+    // clickCounterButtonJSX(){
+    //     return(
+            
+    //         //use card in this clickCounterButton function to style
+    //         //here and then import into the render of the class component
+            
+    //     )
+    // }
 
     render(){
+        //attempting to import styles into this class as a Higher-order compoenet
+        const {classes} = this.props;
+
         return (
             <div>
                 <CssBaseline/>
                 <Container maxwidth="lg">
-                    <Typography component="div" style={{backgroundColor: '#ffee33', 
+                    <Typography component="div" style={{backgroundColor: '#ffd480', 
                                                         height:'100vh',
-                                                        display:'flex'}}>
+                                                        display:'flex',
+                                                        justifyContent: 'center',
+                                                        alignItems: 'center' }}
+                                                        >
                                                             {/* Writing display flex, pushes edge of 
                                                             container to the navbar on the top of the page */}
 
-               
-                    {this.clickCounterButtonJSX()}
+{/*                
+                    {this.clickCounterButtonJSX()} */}
+                                <Card className = {classes.root}>
+                            {/* <Box style={{backgroundColor: '#6fbf73'}}> */}
+                                <CardContent className = {classes.content}>
+                                {/* <p>This Button is the click counter in Component Form, Click It!</p>
+                                <p>This button has been click {this.state.count} times</p> */}
+                                <h1 className = {classes.count}>{this.state.count}</h1>
+                                <button onClick={()=> {this.clickCount()}}>Click Me!</button>
+                            {/* </Box> */}
+                            </CardContent>
+                        </Card>
                 
                 </Typography>
                 {/* this set up on the following line dosen't work becuase click count
@@ -149,4 +187,8 @@ class clickCounterComponent extends Component{
     }
 }
 
-export default clickCounterComponent;
+// export default clickCounterComponent;
+
+
+//attempting to wrap styles around class component to make it a higher-order component
+export default withStyles(useStyles)(clickCounterComponent);

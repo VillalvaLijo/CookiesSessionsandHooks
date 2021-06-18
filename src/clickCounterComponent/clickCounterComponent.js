@@ -26,6 +26,9 @@ import CardContent from '@material-ui/core/CardContent';
 //importing Button from material UI
 import Button from '@material-ui/core/Button';
 
+//importing paper from material-ui
+import Paper from '@material-ui/core/Paper';
+
 
 //styles to be used in rendering, using withStyles Higher-order component
 
@@ -198,11 +201,17 @@ class clickCounterComponent extends Component{
                             {/* </Box> */}
                             </CardContent>
                         </Card>
+                        <Box style={{
+                            maxWidth: 600,
+                            paddingTop: '30px'
+                        }}>
+                            <Paper elevation={5}style={{backgroundColor: '#ffc34d'}}>
                         <Typography variant="body1" classesName={classes.explantion}gutterBottom>
-                            This Clicker button uses a class component. The button increases the count by using a wrapped call to a function (  ()=>{"{"}this.clickCount(){"}"}  ), this allows the function clickCount
+                    This Clicker button uses a class component. The button increases the count by using a wrapped call to a function ( onClick = {"{"} ()=>{"{"}this.clickCount() {"}"} {"}"}  ), this allows the function clickCount
                             to accesses the state from the surrounding context inside the React Class Component. 
                         </Typography>
-                
+                        </Paper>
+                        </Box>
                 </Typography>
                 {/* this set up on the following line dosen't work becuase click count
                 cannot accesses state with out the wrapper function allowing it to grab state from the overhead 

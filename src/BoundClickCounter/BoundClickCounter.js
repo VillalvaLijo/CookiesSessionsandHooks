@@ -1,6 +1,76 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
+//material-ui imports
+import { withStyles } from '@material-ui/styles'
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+import clickCounterComponent from '../clickCounterComponent/clickCounterComponent';
+
+//light greens I want to eperiemnt with
+
+//#84e184 light green
+//#99ff99 light green
+
+
+
+const useStyles = theme => ({
+    rootBox: {
+        display: 'flex',
+
+
+    },
+    titleBox:{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    title: {
+        // width: '100%',
+        'align-self': 'center',
+    },
+    leftBox: {
+        // height:'100vh',
+        width: '50%',
+        display: 'flex',
+        "flex-direction": 'column',
+        // justifyContent: 'center',
+        justifyContent: 'space-evenly',
+        'align-items': 'center'
+        
+    },
+    rightBox: {
+        // height:'100vh',
+        width: '50%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    paperBox: {
+        width: 500,
+    },
+    leftPaper: {
+        backgroundColor: '#84e184',
+        width: 500,
+        height: 200,
+        display: 'flex',
+        justifyContent: 'center'
+
+    },
+    count: {
+        fontSize: 300,
+    }
+
+
+});
+
 class BoundClickCounter extends Component{
 
 
@@ -112,17 +182,68 @@ class BoundClickCounter extends Component{
 
 
     render(){
+        //import styles in from higher order component withStyles
+        const {classes} = this.props;
+        
+
         return(
-            <div>
-                <p>This is the BoundClickCounter, it is different from the previous click counter, it binds, this
+
+            <Box>
+                <CssBaseline/>
+                <Container maxwidth="lg">
+                    <Typography component='div' style={{height:'100vh',
+                                                        // backgroundColor:'#d580ff' //too bright
+                                                        // backgroundColor: '#dd99ff' // too bright
+                                                        backgroundColor: '#ecb3ff',
+                                                        // display: 'flex',
+                                                        }}>
+                    {/* Header */}
+                        <Box className={classes.titleBox}>
+                            <Typography variant="h3" className={classes.title} style={{
+                                                                    
+                            }}>
+                                Bound Click Counter Class Component
+                            </Typography>
+                        </Box>
+                {/* <p>This is the BoundClickCounter, it is different from the previous click counter, it binds, this
                     to the click counter function
                 </p>
-                <p>You have clicked BoundClickCounter {this.state.count} times</p>
-                <button onClick={this.clickCounter}>Click Me</button>
+                <p>You have clicked BoundClickCounter {this.state.count} times</p> */}
+
+
+                {/* This is the left side box that extends down to the bottom of the screen */}
+                <Box className={classes.rootBox}>
+                <Box className= {classes.leftBox}>
+                <Box className={classes.paperBox}>
+                    <Paper elevation={5} className={classes.leftPaper}>
+                        <Typography variant="body1" style={{
+                                                            width: 450,
+                                                            'align-self': 'center',
+                        }}>
+                            This click counter is a React class component that uses a binding inside the class to bind the function to the instance of 'this' in the class.
+                            Without binding the instance of 'this' to the function the button would be unable to access state where the count is stored.
+                         
+                        </Typography>
+                        
+                    </Paper>
+                </Box>
+                <Button variant="contained" color= "secondary" onClick={this.clickCounter}>Click Me</Button>
                 
-            </div>
+                </Box>
+
+                {/* This is the right side of the screen box that extends to the bottom of the page and
+                displays the Count */}
+                <Box className={classes.rightBox}>
+                    <Typography variant="h1" className = {classes.count}>
+                        {this.state.count}
+                    </Typography>
+                </Box>
+                </Box>
+                </Typography>
+                </Container>
+            </Box>
         )
     }
 }
 
-export default BoundClickCounter;
+export default withStyles(useStyles)(BoundClickCounter);

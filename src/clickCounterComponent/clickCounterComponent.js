@@ -44,6 +44,9 @@ const useStyles = theme => ({
         alignItems: 'center',
         height: 460,
     },
+    header: {
+        'block-size': '100px',
+    },
     count: {
         fontSize: 150,
         'block-size': '170px',
@@ -53,6 +56,9 @@ const useStyles = theme => ({
         width: 200,
         color: "#ffea00",
         
+    },
+    explantion:{
+        'block-size':'600px'
     } 
   });
 
@@ -166,27 +172,36 @@ class clickCounterComponent extends Component{
                                                         height:'100vh',
                                                         display:'flex',
                                                         justifyContent: 'center',
-                                                        alignItems: 'center' }}
+                                                        alignItems: 'center', 
+                                                        "flex-direction": "column"}}
                                                         >
                                                             {/* Writing display flex, pushes edge of 
                                                             container to the navbar on the top of the page */}
-
+                    <Typography variant="h3" style={{'block-size': '150px'}}>
+                        Class Component Clicker
+                    </Typography>
 {/*                
                     {this.clickCounterButtonJSX()} */}
-                                <Card className = {classes.root}>
+                                <Card className = {classes.root} variant="outlined">
                             {/* <Box style={{backgroundColor: '#6fbf73'}}> */}
                                 <CardContent className = {classes.content}>
                                 {/* <p>This Button is the click counter in Component Form, Click It!</p>
                                 <p>This button has been click {this.state.count} times</p> */}
-                                <Box>
+                                {/* <Typography variant='h5' className= {classes.header}>
+                                    Class Component Clicker
+                                </Typography> */}
+
                                 <h1 className = {classes.count}>{this.state.count}</h1>
-                                </Box>
-                                <Box>
+                            
                                 <Button className= {classes.button} variant="contained" color="secondary"onClick={()=> {this.clickCount()}}>Click Me!</Button>
-                                </Box>
+                                
                             {/* </Box> */}
                             </CardContent>
                         </Card>
+                        <Typography variant="body1" classesName={classes.explantion}gutterBottom>
+                            This Clicker button uses a class component. The button increases the count by using a wrapped call to a function (  ()=>{"{"}this.clickCount(){"}"}  ), this allows the function clickCount
+                            to accesses the state from the surrounding context inside the React Class Component. 
+                        </Typography>
                 
                 </Typography>
                 {/* this set up on the following line dosen't work becuase click count

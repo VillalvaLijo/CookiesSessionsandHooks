@@ -36,6 +36,8 @@ const useStyles = makeStyles((theme) =>({
     
   },
   cardContent: {
+        width: 275,
+        height: 460,
         backgroundColor: '#6eded3',
         display: 'flex',
         justifyContent: 'center',
@@ -137,7 +139,7 @@ function CounterButton(){
                           justifyContent:"center",
                           alignItems: "center"}}>
                 <Card className={classes.root}>
-                <CardContent className={classes.cardContent}>
+                <CardContent className={classes.cardContent} style={{backgroundColor: '#6eded3'}}>
               {/* <Card classes={{root: classes.root}} > */}
 
             

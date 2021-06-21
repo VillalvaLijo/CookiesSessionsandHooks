@@ -215,7 +215,7 @@ class BoundClickCounter extends Component{
                 <Box className={classes.rootBox}>
                 <Box className= {classes.leftBox}>
                 <Box className={classes.paperBox}>
-                    <Paper elevation={5} className={classes.leftPaper}>
+                <Paper elevation={5} className={classes.leftPaper}  style={{backgroundColor: '#84e184'}}>
                         <Typography variant="body1" style={{
                                                             width: 450,
                                                             'align-self': 'center',
@@ -234,7 +234,7 @@ class BoundClickCounter extends Component{
                 {/* This is the right side of the screen box that extends to the bottom of the page and
                 displays the Count */}
                 <Box className={classes.rightBox}>
-                    <Typography variant="h1" className = {classes.count}>
+                    <Typography variant="h1" className = {classes.count} style={{fontSize: 300}}>
                         {this.state.count}
                     </Typography>
                 </Box>

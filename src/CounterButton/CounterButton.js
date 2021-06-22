@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
-import GeneralTheme from '../GeneralTheme/GeneralTheme';
 // import { makeStyles } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/core';
 import {makeStyles} from '@material-ui/styles'
 
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -11,7 +9,6 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 
 import Box from '@material-ui/core/Box';
@@ -21,19 +18,12 @@ import Paper from '@material-ui/core/Paper';
 const useStyles = makeStyles((theme) =>({
   root: {
     display: "flex",
-    // "background-color": "#26a69a",
     color:"#26a69a",
-    // backgroundColor:"black",
     width: 275,
     height: 460,
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-  
-    //maxWidth: 250,
-      // "background-color": "#26a69a",
-  
-    
   },
   cardContent: {
         width: 275,
@@ -44,31 +34,16 @@ const useStyles = makeStyles((theme) =>({
         "flex-direction": "column",
         alignItems: 'center',
   },
-  cardCss: {
-    
-    // bgcolor: "green",
-    
-    // color:  "#26a69a",
-    
-    // justifyContent: "space-between",
-    // boxShadow: '10',
-
-
-  },
   fontbox:{
     "background-color": "#26a69a",
   },
   countDisplay:{
     fontSize: 150,
-    // "background-color": "#26a69a",
-    // paddingBottom: -30,
   },
   button:{
     "background-color": 'Yellow',
-    // alignItems: "flex-end",
     maxWidth: 200,
     width: 200,
-    // pageBreakBefore: always,
     "bottom": "1",
   }
 }))
@@ -83,6 +58,8 @@ function CounterButton(){
       
       //console.log("Inside useEffect, function inside useEffect Hook, count",count);
     
+      //useEffect hook is called on component did mount and component did update. Logic
+      //from those two components are used in the useEffect hook.
 
       if(count == 0 ){
         getClicks();
@@ -93,7 +70,11 @@ function CounterButton(){
 
     function getClicks(){
       axios.get('/api/firstClickCounter').then(resp =>{
+
         //console.log("This is the first counter button get request, response", resp.data.firstCounterClicks);
+
+        //The number sent back from the server by the Get request is tested to make sure it is a number and if
+        //it is a number it is tested to make sure it is not a NAN by testing if it is equal to itself.
         if(typeof(resp.data.firstCounterClicks)==='number' && resp.data.firstCounterClicks === resp.data.firstCounterClicks){
           setCount(count = resp.data.firstCounterClicks);
         }
@@ -119,8 +100,7 @@ function CounterButton(){
         <div>
           <CssBaseline/>
           <Container maxWidth="lg">
-            <Typography component="div" style={{backgroundColor: '#26a69a',
-                                                    // backgroundColor:'#004d4d', 
+            <Typography component="div" style={{backgroundColor: '#26a69a', 
                                                     height:'100vh',
                                                     display: "flex",
                                                     flexDirection: 'column',
@@ -140,20 +120,12 @@ function CounterButton(){
                           alignItems: "center"}}>
                 <Card className={classes.root}>
                 <CardContent className={classes.cardContent} style={{backgroundColor: '#6eded3'}}>
-              {/* <Card classes={{root: classes.root}} > */}
-
-            
-              {/* <ThemeProvider theme = {GeneralTheme}> */}
-                {/* <p>You clicked {count} times</p>
-                <br/> */}
 
                 <h1  className={classes.countDisplay}>{count}</h1>
              
                 <Button className = {classes.button} variant="contained"  color="secondary" onClick={() => setCount(count + 1)}>
                   Click me
                 </Button>
-              {/* </ThemeProvider> */}
-        
               </CardContent>
               </Card>
               </Box>
@@ -178,9 +150,6 @@ function CounterButton(){
 
                 </Paper>
               </Box>
-             
-            {/* </div> */}
-            {/* </Typography> */}
             </Typography>
           </Container>
         </div>

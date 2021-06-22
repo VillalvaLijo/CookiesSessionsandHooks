@@ -8,6 +8,8 @@ import { useHistory } from "react-router-dom";
 
 import { makeStyles } from '@material-ui/styles';
 
+//this is a Menu Button used in the app bar with the menu Icon
+
 
 const useStyles = makeStyles((theme) =>({
 
@@ -26,6 +28,7 @@ const classes= useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   let history = useHistory();
+  //use the useHistory hook to hook into history of the dom
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -34,6 +37,7 @@ const classes= useStyles();
   const handleClose = (pathname) => {
     setAnchorEl(null);
     history.push(pathname);
+    //push the path to the history stack
   };
 
   return (

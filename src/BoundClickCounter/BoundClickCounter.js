@@ -14,12 +14,8 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import clickCounterComponent from '../clickCounterComponent/clickCounterComponent';
 
-//light greens I want to eperiemnt with
 
-//#84e184 light green
-//#99ff99 light green
-
-
+//styles to be inserted into the JSX
 
 const useStyles = theme => ({
     rootBox: {
@@ -33,21 +29,18 @@ const useStyles = theme => ({
         alignItems: 'center'
     },
     title: {
-        // width: '100%',
+       
         'align-self': 'center',
     },
     leftBox: {
-        // height:'100vh',
         width: '50%',
         display: 'flex',
         "flex-direction": 'column',
-        // justifyContent: 'center',
         justifyContent: 'space-evenly',
         'align-items': 'center'
         
     },
     rightBox: {
-        // height:'100vh',
         width: '50%',
         display: 'flex',
         justifyContent: 'center',
@@ -113,13 +106,10 @@ class BoundClickCounter extends Component{
 
     componentDidUpdate(prevstate){
 
-        // console.log("inside componentDidUpdate, this.state", this.state);
 
         //if the prevState is not equal to the current state, (Counter button has been clicked),
         //Post the change in data server side, with axios POST method in postClick()
         if (prevstate != this.state){
-
-            //console.log("Inside ComponentDidUpdate BoundClickCounter, this.state",this.state);
             
             this.postClick()
         };
@@ -164,11 +154,9 @@ class BoundClickCounter extends Component{
         this.setState({
             count: this.state.count + 1,
         })
-        // console.log("INside Bound CLick counter click Counter function")
     }
 
     postClick(){
-        // console.log("Inside postClick, thi.state.count", this.state.count);
 
         //Post clicks from state object to the server to be stored with cookie-session
         axios({
@@ -192,10 +180,7 @@ class BoundClickCounter extends Component{
                 <CssBaseline/>
                 <Container maxwidth="lg">
                     <Typography component='div' style={{height:'100vh',
-                                                        // backgroundColor:'#d580ff' //too bright
-                                                        // backgroundColor: '#dd99ff' // too bright
                                                         backgroundColor: '#ecb3ff',
-                                                        // display: 'flex',
                                                         }}>
                     {/* Header */}
                         <Box className={classes.titleBox}>
@@ -205,10 +190,6 @@ class BoundClickCounter extends Component{
                                 Bound Click Counter Class Component
                             </Typography>
                         </Box>
-                {/* <p>This is the BoundClickCounter, it is different from the previous click counter, it binds, this
-                    to the click counter function
-                </p>
-                <p>You have clicked BoundClickCounter {this.state.count} times</p> */}
 
 
                 {/* This is the left side box that extends down to the bottom of the screen */}
@@ -246,4 +227,6 @@ class BoundClickCounter extends Component{
     }
 }
 
+
+//use higher order component withStyles to wrap component BoundClickCounter with styles
 export default withStyles(useStyles)(BoundClickCounter);

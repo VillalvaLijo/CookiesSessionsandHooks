@@ -13,6 +13,3 @@ const GeneralTheme = createTheme({
 })
 
 export default GeneralTheme;
-
-//#ffea00 yellow
-//#00bcd4 cyan
